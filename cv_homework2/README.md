@@ -45,6 +45,7 @@ cv_homework2/
    - `*_Outline.png`：单独的轮廓图像
    - `*_Overlay.png`：轮廓叠加到原图的结果
 
+
 ## 运行流程
 
 脚本`run.sh`会自动执行以下步骤：
@@ -69,3 +70,5 @@ cv_homework2/
 
 - 确保拥有正确的文件执行权限：`chmod +x run.sh`
 - 目前处理图像的固定尺寸为512x512像素
+- 根据 `extract.h` 中定义的输出规则，修改 `main.cpp` 中的输出类函数和 `run.sh` 的 `output_img` 文件名，
+可以看到梯度幅度图、沿水平垂直的梯度图和方向角图（示例中分别为：`lena_Grid.png`, `lena_Gx.png`, `lena_Gy.png`, `lena_Phi_x_y.png`）

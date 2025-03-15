@@ -222,8 +222,4 @@ void Image2D::ShowOutline()
     }
     std::cout << '\n';
   }
-  // this->ShowF();
-  // this->ShowPhi(1);
-  // this->ShowPhi(2);
-  // this->ShowPhi(3);
 }
