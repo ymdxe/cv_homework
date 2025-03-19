@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cstring>
 
 // 二维图像类
 class Image2D
@@ -23,7 +24,7 @@ class Image2D
     void MeanFilter();
 
     // 中值滤波
-    void MiddleFileter();
+    void MedianFileter();
 
     // 向输出流中输出图像
     void ShowImg();
@@ -72,7 +73,7 @@ void Image2D::MeanFilter() {
   }
 }
 
-void Image2D::MiddleFileter()
+void Image2D::MedianFileter()
 {
   std::vector<std::vector<int>> tmp_img(img_);
   int dx[] = {-1, -1, 0, 1, 1, 1, 0, -1};
@@ -105,12 +106,17 @@ void Image2D::ShowImg()
 }
 
 
-int main()
+int main(int argc, char *argv[])
 {
   Image2D img2d;
   img2d.InitImg();
   img2d.SetKernel();
-  img2d.MeanFilter();
+  if (strcmp(argv[1], "mean") == 0) {
+    img2d.MeanFilter();
+  } else if (strcmp(argv[1], "median") == 0) {
+    img2d.MedianFileter();
+  }
+  // img2d.MeanFilter();
   // img2d.MiddleFileter();
   img2d.ShowImg();
 

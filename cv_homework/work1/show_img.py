@@ -1,13 +1,19 @@
+import argparse
 import sys
 import numpy as np
 import cv2
 
 def main():
     # 从标准输入读取 height 和 width
+    parser = argparse.ArgumentParser()
+    parser.add_argument('filter', type=str, choices=['mean', 'median'], 
+                        help='Type of filter to apply: mean or median')
+    args = parser.parse_args()
     height, width = map(int, input().split())
     
     # 创建一个空的列表来存储矩阵数据
     image_data = []
+    
     
     # 读取 height 行数据
     for _ in range(height):
@@ -24,7 +30,10 @@ def main():
 
     # 保存图像
     # cv2.imwrite('MiddleFilter.jpg', image_array)
-    cv2.imwrite('MeanFilter.jpg', image_array)
+    if args.filter == 'mean':
+        cv2.imwrite('MeanFilter.jpg', image_array)
+    elif args.filter == 'median':
+        cv2.imwrite('MedianFilter.jpg', image_array)
 
     # # 显示图像
     # cv2.imshow('Output Image', image_array)

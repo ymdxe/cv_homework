@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 def load_data(filename):
-    """读取 C++ 处理后的 3D 数据"""
+    """读取处理后的 3D 数据"""
     with open(filename, "r") as f:
         lines = f.readlines()
 
@@ -35,4 +35,5 @@ ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 
+# plt.savefig("3DFilter.png")
 plt.show()

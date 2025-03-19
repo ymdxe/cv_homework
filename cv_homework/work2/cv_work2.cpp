@@ -82,7 +82,7 @@ void Image3D::Filter() {
 
 void Image3D::ShowImg()
 {
-  std::cout << height << " " << width << " " << depth << std::endl;
+  std::cout << height << " " << width << " " << depth << '\n';
 
   for (int i = 0; i < height; i++) {
     for (int j = 0; j < width; j++) {
@@ -96,6 +96,8 @@ void Image3D::ShowImg()
 
 int main()
 {
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(0), std::cout.tie(0);
   Image3D img;
   img.InitImg();
   img.SetKernel();

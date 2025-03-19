@@ -14,6 +14,7 @@ def generate_wave():
 # 生成 3D 数据
 img = generate_wave()
 
+
 # 保存到文件
 with open("/home/ymdxe/code/cpp/cv_homework/work2/img.txt", "w") as f:
     for x in range(height):
