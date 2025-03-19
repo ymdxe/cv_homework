@@ -34,25 +34,24 @@ void Image2D::SetKernel()
 void Image2D::MeanFilter()
 {
   std::vector<std::vector<int>> tmp_img(img_);
+  int dx[] = {-1, -1, 0, 1, 1, 1, 0, -1};
+  int dy[] = {0, 1, 1, 1, 0, -1, -1, -1};
   for (int x = 0; x < height; x++)
   {
     for (int y = 0; y < width; y++)
     {
       float avg = 0;
       int cnt = 0;
-      for (int i = -1; i <= 1; i++)
-      {
-        for (int j = -1; j <= 1; j++)
+      for (int i = 0;i < 8;i ++) {
+        int u = x + i;
+        int v = y + j;
+        if (u >= 0 && u < height && v >= 0 && v < width)
         {
-          int u = x + i;
-          int v = y + j;
-          if (u >= 0 && u < height && v >= 0 && v < width)
-          {
-            avg += 1.0 * tmp_img[u][v] * kernel_[i + 1][j + 1];
-            cnt++;
-          }
+          avg += 1.0 * tmp_img[u][v] * kernel_[dx[i] + 1][dy[i] + 1];
+          cnt++;
         }
       }
+      
       img_[x][y] = static_cast<int>(avg / cnt);
     }
   }
