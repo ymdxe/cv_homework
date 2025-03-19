@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 // 二维图像类
 class Image2D
@@ -20,6 +21,9 @@ class Image2D
 
     // 均值滤波过程
     void MeanFilter();
+
+    // 中值滤波
+    void MiddleFileter();
 
     // 向输出流中输出图像
     void ShowImg();
@@ -50,21 +54,40 @@ void Image2D::SetKernel()
 
 void Image2D::MeanFilter() {
   std::vector<std::vector<int>> tmp_img(img_);
+  int dx[] = {-1, -1, 0, 1, 1, 1, 0, -1};
+  int dy[] = {0, 1, 1, 1, 0, -1, -1, -1};
   for (int x = 0; x < height; x++) {
       for (int y = 0; y < width; y++) {
           float avg = 0;
           int cnt = 0;
-          for (int i = -1; i <= 1; i++) {
-              for (int j = -1; j <= 1; j++) {
-                  int u = x + i;
-                  int v = y + j;
-                  if (u >= 0 && u < height && v >= 0 && v < width) {
-                      avg += 1.0 * tmp_img[u][v] * kernel_[i+1][j+1];
-                      cnt ++;
-                  }
-              }
+          for (int i = 0;i < 8;i ++) {
+            int u = dx[i] + x, v = dy[i] + y;
+              if (u >= 0 && u < height && v >= 0 && v < width) {
+                avg += 1.0 * tmp_img[u][v] * kernel_[dx[i] + 1][dy[i] + 1];
+                cnt ++;
+            }
           }
           img_[x][y] = static_cast<int>(avg / cnt);
+      }
+  }
+}
+
+void Image2D::MiddleFileter()
+{
+  std::vector<std::vector<int>> tmp_img(img_);
+  int dx[] = {-1, -1, 0, 1, 1, 1, 0, -1};
+  int dy[] = {0, 1, 1, 1, 0, -1, -1, -1};
+  for (int x = 0; x < height; x++) {
+      for (int y = 0; y < width; y++) {
+          std::vector<int> vec;
+          for (int i = 0;i < 8;i ++) {
+            int u = dx[i] + x, v = dy[i] + y;
+              if (u >= 0 && u < height && v >= 0 && v < width) {
+                vec.push_back(tmp_img[u][v]);
+            }
+          }
+          std::sort(vec.begin(), vec.end());
+          img_[x][y] = vec[vec.size() / 2];
       }
   }
 }
@@ -88,6 +111,7 @@ int main()
   img2d.InitImg();
   img2d.SetKernel();
   img2d.MeanFilter();
+  // img2d.MiddleFileter();
   img2d.ShowImg();
 
   return 0;

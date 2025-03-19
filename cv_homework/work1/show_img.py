@@ -23,14 +23,15 @@ def main():
         return
 
     # 保存图像
-    cv2.imwrite('result.jpg', image_array)
+    # cv2.imwrite('MiddleFilter.jpg', image_array)
+    cv2.imwrite('MeanFilter.jpg', image_array)
 
-    # 显示图像
-    cv2.imshow('Output Image', image_array)
+    # # 显示图像
+    # cv2.imshow('Output Image', image_array)
 
-    # 按任意键关闭窗口
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # # 按任意键关闭窗口
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
 if __name__ == "__main__":
     main()

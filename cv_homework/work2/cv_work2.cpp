@@ -55,6 +55,7 @@ void Image3D::SetKernel()
 
 void Image3D::Filter() {
   std::vector<std::vector<std::vector<int>>> tmp_img(img_);
+
   for (int x = 0; x < height; x++) {
       for (int y = 0; y < width; y++) {
           for (int z = 0; z < depth; z++) {
