@@ -54,11 +54,17 @@ cv_homework2/
 3. 使用`visualize.py`将处理结果转换回可视化图像
 4. 将轮廓叠加到原图并保存结果
 
-## 轮廓展示
+## 原始灰度图轮廓展示
 ![轮廓图](result_img/lena_Outline.png)
 
-## 叠加效果
+## 原始灰度图叠加效果
 ![叠加效果](result_img/lena_Overlay.png)
+
+## 二值化后轮廓
+![二值化轮廓图](result_img/2-lena_Outline.png)
+
+## 二值化后叠加效果
+![二值化叠加](result_img/2-lena_Overlay.png)
 
 ## 参数调整
 

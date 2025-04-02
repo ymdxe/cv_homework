@@ -6,8 +6,8 @@ for img_path in ../origin_img/*; do
 
   img_txt="${filename}_img.txt"
   outline_txt="${filename}_outline.txt"
-  output_img="../result_img/${filename}_Outline.png"
-  overlay_img="../result_img/${filename}_Overlay.png"
+  output_img="../result_img/2-${filename}_Outline.png"
+  overlay_img="../result_img/2-${filename}_Overlay.png"
 
   # 步骤1：生成图像数据
   python get_img.py "$img_path" > "$img_txt"

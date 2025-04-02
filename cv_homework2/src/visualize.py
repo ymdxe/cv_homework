@@ -78,8 +78,8 @@ def main():
     image = normalize_data(data, is_angle=args.angle)
     
     # 保存图像
-    # cv2.imwrite(args.output, image)
-    # print(f"图像已保存为 {args.output}")
+    cv2.imwrite(args.output, image)
+    print(f"图像已保存为 {args.output}")
     
     # 如果需要叠加轮廓到原图
     if args.overlay and args.original:
